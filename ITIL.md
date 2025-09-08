@@ -1,171 +1,73 @@
 # 🚀 ITIL v4 Crash Course – Focused Edition
+**Author Information**  
+- Name: [Sukumar Suryawanshi]  
+- Role: IT Service Management Lead  
+- Contact: [email or Teams handle]  
+- Version: 1.0  
+- Last Updated: 2025-09-08  
+- Source Control Tag: itil-v4-focused-v1.0  
+- License / Usage: Internal enablement guide (adapt before external sharing)  
+- Attribution Note: Condensed for rapid onboarding; align with your org’s governance, security, and compliance standards before adoption.  
+- Improvement Log: Track edits (process deltas, KPI definitions, tooling changes) in CHANGELOG.md  
+
+> Update Last Updated + Version whenever substantive process, KPI, or template changes are made.  
+## Index
+- [Shared Foundations](shared-foundations.md)
+
+- [1) Incident Management](01-incident-management.md)
+    - [What is an incident?](01-incident-management.md#what-is-an-incident)
+    - [Priority Matrix (Impact × Urgency)](01-incident-management.md#priority-matrix-impact--urgency)
+    - [Workflow](01-incident-management.md#workflow)
+    - [Real scenario](01-incident-management.md#real-scenario)
+    - [Manager’s Responsibilities](01-incident-management.md#managers-responsibilities)
+
+- [2) Problem Management](02-problem-management.md)
+    - [What is a Problem Ticket?](02-problem-management.md#what-is-a-problem-ticket)
+    - [Workflow](02-problem-management.md#workflow)
+    - [Real scenario](02-problem-management.md#real-scenario)
+    - [Manager’s Responsibilities](02-problem-management.md#managers-responsibilities)
+
+- [3) Change Enablement (Change Management)](03-change-enablement.md)
+    - [What is a Change Record?](03-change-enablement.md#what-is-a-change-record)
+    - [Types of Change](03-change-enablement.md#types-of-change)
+    - [Example CR SLAs](03-change-enablement.md#example-cr-slas)
+    - [Manager’s Responsibilities](03-change-enablement.md#managers-responsibilities)
+
+- [4) Release Management](04-release-management.md)
+    - [What is a Release?](04-release-management.md#what-is-a-release)
+    - [Essentials](04-release-management.md#essentials)
+    - [Real scenario](04-release-management.md#real-scenario)
+    - [Manager’s Responsibilities](04-release-management.md#managers-responsibilities)
+
+- [5) Ticket Triaging](05-ticket-triaging.md)
+    - [Objectives](05-ticket-triaging.md#objectives)
+    - [Minimum Data to Record Fast](05-ticket-triaging.md#minimum-data-to-record-fast)
+    - [Good Triaging Signals](05-ticket-triaging.md#good-triaging-signals)
+    - [Anti-Patterns](05-ticket-triaging.md#anti-patterns)
+    - [Outcome](05-ticket-triaging.md#outcome)
+    - [Techniques](05-ticket-triaging.md#techniques)
+    - [Task Types](05-ticket-triaging.md#task-types)
+
+- [6) Reducing Incidents & Improving Service Requests](06-reduction-and-requests.md)
+    - [Reduce incidents](06-reduction-and-requests.md#reduce-incidents)
+    - [Improve service requests](06-reduction-and-requests.md#improve-service-requests)
+
+- [Templates](templates.md)
+    - [Incident (INC)](templates.md#a-incident-inc)
+    - [Service Request (SR)](templates.md#b-service-request-sr)
+    - [Change Request (CR)](templates.md#c-change-request-cr)
+
+- [Manager Checklists (Daily)](manager-checklists.md)
+- [CAB Agenda (Sample)](cab-agenda.md)
+- [Quick Decision Flows](quick-decision-flows.md)
+    - [Incident vs Service Request](quick-decision-flows.md#incident-vs-service-request)
+    - [Change Type](quick-decision-flows.md#change-type)
+- [Key KPIs](key-kpis.md)
 
 ## Shared Foundations
 
----
-
-## 1) Incident Management
-
-**Definition:** Restore normal service operation as quickly as possible to minimize impact.
-
-### What is an incident?
-
- an unplanned interruption to a service, a reduction in service quality, or a component (CI) failure/event that has not yet impacted users but risks doing so (e.g., outage, severe latency, failed batch job, capacity threshold alarm needing action)
 
 
- 
-### Priority Matrix (Impact × Urgency)
-
-| Impact \ Urgency | High | Medium | Low |
-|------------------|------|--------|-----|
-| **High** (Service down, revenue at risk) | **P1** | P2 | P3 |
-| **Medium** (Degraded service, workaround exists) | P2 | **P3** | P4 |
-| **Low** (Minor inconvenience) | P3 | P4 | **P5** |
-
-**Example SLA targets:**
-- **P1**: Response 15 min, Comms every 30 min, Restore ≤ 4h  
-- **P2**: Response 1h, Comms every 2h, Restore ≤ 8h  
-- **P3**: Response 4h, Restore ≤ 2 business days  
-- **P4/P5**: Planned effort, usually 3–10 days  
-
-
-**Workflow:**
-1. Detect & Log (monitoring alert or user report)  
-2. Triage → categorize, priority, CI, assignment  
-3. Contain / Workaround  
-4. Escalate / Swarm (L2/L3 teams)  
-5. Communicate regularly  
-6. Resolve / Restore  
-7. Close with confirmation  
-8. Post-Incident Review (for P1/P2)
-
-**Real scenario:**  
-Checkout API outage → rollback last feature flag → restored in 35 min.
-
-**Manager’s Responsibilities:**
-- Drive **major incident bridges**  
-- Ensure **status updates** & SLA adherence  
-- Maintain **incident quality** (categorization, closure notes)  
-- Trigger **Problem records**  
-- Track KPIs (MTTA, MTTR, SLA hit rate, FCR)
-
----
-
-## 2) Problem Management
-
-### What is a Problem Ticket?
-
-A Problem ticket (Problem record) is a work item raised to investigate and eliminate the underlying cause(s) of one or more incidents, or to address a significant latent risk discovered proactively (trend, monitoring, major incident review). It captures: pattern/symptoms, impact, affected services/CIs, linked incidents, analysis tasks, root cause (once known), Known Error, workaround, and required corrective changes.
-
-Raise a Problem when:
-- Recurrent or related incidents (pattern emerging)
-- Major (P1/P2) incident requiring RCA
-- Significant risk or latent error detected (capacity, vulnerability, instability)
-- High incident volume category needing reduction
-
-Goal: reduce repeat incidents and improve service stability via documented root cause removal and knowledge reuse.
-
-
-
-**Definition:** Identify and manage root causes of incidents to reduce recurrence.
-
-**Workflow:**
-1. Detect recurring issues  
-2. Log & prioritize Problem record  
-3. Root Cause Analysis (RCA)  
-4. Document **Known Error** + **Workaround**  
-5. Solution (may need CR/Release)  
-6. Verify & close  
-
-**Real scenario:**  
-Recurring VPN drops → RCA reveals firewall memory leak → fix via firmware upgrade → no more VPN incidents.
-
-**Manager’s Responsibilities:**
-- Run **Problem Review Board**  
-- Track **RCA quality & closure**  
-- Maintain **Known Error DB (KEDB)**  
-- Drive corrective CRs  
-- KPIs: problem resolution time, reduction in repeat incidents
-
----
-
-## 3) Change Enablement (Change Management)
-### What is a Change Record?
-
-A Change Record (CR) is the formal, trackable artifact used to assess, authorize, schedule, implement, and review a change to a production (or production-bound) environment.
-
-It captures:
-- Purpose / business justification
-- Scope (services / CIs affected)
-- Type (Standard, Normal – Minor/Significant, Emergency)
-- Risk & impact assessment
-- Implementation plan (step-by-step)
-- Validation / test evidence
-- Backout (rollback) plan
-- Schedule / window & dependencies
-- Required approvals (owners, CAB, eCAB)
-- Deployment method (manual, automated pipeline)
-- Success criteria & monitoring plan
-- Post-implementation results (actual impact, issues, lessons)
-
-Lifecycle:
-1. Draft (submitted)
-2. Assessment (risk, impact, conflicts)
-3. Authorization (approvals / CAB)
-4. Implementation (execution + monitoring)
-5. Review & Close (outcome, metrics, linkage to incidents/problems)
-
-When to raise:
-- Any non-trivial change to code, infrastructure, configuration, security posture, data structures, platform versions, or scheduled jobs that could affect live service
-- Emergency fixes for active/high-impact incidents (flagged Emergency)
-- Problem-driven corrective actions (linked to Problem Record)
-- Release packaging (each deploy may reference multiple CRs, or a Release groups them)
-
-Not a Change Record:
-- Routine pre-approved Standard actions (unless outside catalog)
-- Break/fix execution inside an active incident (unless follow-up remediation is needed)
-
-Good practice:
-- Single clear objective
-- Measurable success criteria
-- Tested rollback
-- No approval gaps before window
-- Post-change metrics reviewed (detect silent failures)
-
-Key quality checks:
-- Risk coherent with impact description
-- Rollback independent, fast, and validated
-- No blackout / conflict on calendar
-- Monitoring in place before execution
-- Linked incidents/problems closed or updated after completion
-- CFR (Change Failure Rate) impact recorded if issues occurred
-
-**Definition:** Ensure changes are assessed, authorized, and implemented with minimal risk.
-
-**Types of Change:**
-- **Standard** – low risk, pre-approved (e.g., adding user to AD group)  
-- **Normal** – needs assessment & approval  
-  - Minor (low risk, quick approval)  
-  - Significant/Major (requires CAB review)  
-- **Emergency** – urgent fix for P1 → eCAB approval
-
-**Example CR SLAs:**
-
-| Type | Decision SLA | Lead Time | Approval |
-|------|--------------|-----------|----------|
-| Standard | Pre-approved | Catalog-based | Custodian / Automation |
-| Normal – Minor | ≤ 2 days | ≥ 2 days | Change Manager + Owner |
-| Normal – Significant | ≤ 5 days | ≥ 5–10 days | CAB |
-| Emergency | ≤ 60 min | Immediate | eCAB |
-
-**Manager’s Responsibilities:**
-- Own **Change calendar** & blackout policy  
-- Run **CAB meetings**  
-- Track **success rate & CFR (Change Failure Rate)**  
-- Ensure **rollback plans** exist  
-- KPIs: success %, emergency %, lead time
-
----
 
 ## 4) Release Management
 
@@ -319,10 +221,7 @@ Monthly release train → tests passed → staged rollout (10%/50%/100%) → mon
 - Assignment Group: AppOps L2
 - Initial Comms: Status page updated at 14:15 ET
 
-
-
 **Closing:**
-
 
 - Resolution: [Rolled back feature flag; service restored]
 - Root Cause: [Misconfigured rule]
@@ -330,14 +229,11 @@ Monthly release train → tests passed → staged rollout (10%/50%/100%) → mon
 - User Confirmation: [Yes]
 - Outage Duration: [35 minutes]
 
-
-
 ---
 
 ### B) Service Request (SR)
 
 **Opening:**
-
 
 - Title: [Grant read-only DataLake access for Finance]
 - Catalog Item: [DataLake Access – ReadOnly]
@@ -346,16 +242,11 @@ Monthly release train → tests passed → staged rollout (10%/50%/100%) → mon
 - Approvals: [Manager + Data Owner]
 - Fulfillment Steps: [Add to AD group; validate permissions]
 
-
-
-
 **Closing:**
-Delivered: [Read-only IAM policy applied]
-Verification: [Requester validated access]
-SLA Met: [Yes]
+Delivered: [Read-only IAM policy applied]  
+Verification: [Requester validated access]  
+SLA Met: [Yes]  
 Docs Updated: [KBA-456]
-
-
 
 ---
 
@@ -363,27 +254,22 @@ Docs Updated: [KBA-456]
 
 **Opening:**
 
-Change Type: [Normal – Significant]
-Title: [Upgrade PostgreSQL 13.8 → 14.6 on prod cluster]
-Risk: [Medium-High]
-Impact: [Read-only 5 min; maintenance 30 min]
-Plan: [Step-by-step with rollback]
-Evidence: [Perf test passed; rollback tested]
-Schedule: [2025-09-14 02:00–03:00 ET]
-Comms: [Status page 48h prior]
+Change Type: [Normal – Significant]  
+Title: [Upgrade PostgreSQL 13.8 → 14.6 on prod cluster]  
+Risk: [Medium-High]  
+Impact: [Read-only 5 min; maintenance 30 min]  
+Plan: [Step-by-step with rollback]  
+Evidence: [Perf test passed; rollback tested]  
+Schedule: [2025-09-14 02:00–03:00 ET]  
+Comms: [Status page 48h prior]  
 Approvals: [DBA Lead, Service Owner, CAB]
 
-
-
-**Closing:**
-Outcome: [Successful]
-Duration: [26 min, within window]
-Impact: [Minimal]
-Backout Used: [No]
+**Closing:**  
+Outcome: [Successful]  
+Duration: [26 min, within window]  
+Impact: [Minimal]  
+Backout Used: [No]  
 Post-Review: [Screenshots attached]
-
-
-
 
 ---
 
@@ -430,21 +316,15 @@ Post-Review: [Screenshots attached]
 
 **Incident vs Service Request**
 
-
-Is something broken now?
-→ Yes → Incident
+Is something broken now?  
+→ Yes → Incident  
 → No → Request (access/provisioning/info)
-
-
 
 **Change Type**
 
-
-Is change low risk & pre-approved? → Standard
-Is it urgent to fix a P1? → Emergency (eCAB)
+Is change low risk & pre-approved? → Standard  
+Is it urgent to fix a P1? → Emergency (eCAB)  
 Else → Normal (Minor or Significant)
-
-
 
 ---
 
