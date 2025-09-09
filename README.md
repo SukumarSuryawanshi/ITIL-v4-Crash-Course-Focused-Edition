@@ -42,18 +42,18 @@
   - [Reduce incidents](06-reduction-and-requests.md#reduce-incidents)
   - [Improve service requests](06-reduction-and-requests.md#improve-service-requests)
 
-- [Templates](templates.md)
+- [7) Templates](templates.md)
   - [Incident (INC)](templates.md#a-incident-inc)
   - [Service Request (SR)](templates.md#b-service-request-sr)
   - [Change Request (CR)](templates.md#c-change-request-cr)
 
-- [Manager Checklists (Daily)](manager-checklists.md)
+- [8) Manager Checklists (Daily)](manager-checklists.md)
 - [CAB Agenda (Sample)](cab-agenda.md)
 - [Quick Decision Flows](quick-decision-flows.md)
   - [Incident vs Service Request](quick-decision-flows.md#incident-vs-service-request)
   - [Change Type](quick-decision-flows.md#change-type)
 
-- [7) Role and task of a ITIL lead](07-Roles-and-Tasks.md)
+- [9) Role and task of a ITIL lead](07-Roles-and-Tasks.md)
   - [Purpose of the Role](07-Roles-and-Tasks.md#purpose-of-the-role)
   - [Position in Governance](07-Roles-and-Tasks.md#position-in-governance)
   - [Core Responsibilities](07-Roles-and-Tasks.md#core-responsibilities)
@@ -65,14 +65,14 @@
   - [Success Measures](07-Roles-and-Tasks.md#success-measures)
   - [Continuous Improvement Focus](07-Roles-and-Tasks.md#continuous-improvement-focus)
 
-- External Resource Links (09-quick-videos.docx)
-  Quick Videos:
+- [10) External Resource Links](09-quick-videos.docx)
+
 
   - [What is ITIL in ITSM](https://www.youtube.com/watch?v=Zt6GNAIoUsY)
   - [Type list in ITIL](https://youtu.be/C7Bpf0wIhOc?t=447)
   - [CMDB in ServiceNow](https://www.youtube.com/watch?v=3wJV5O0f2-s)
   - [What is CI](https://www.youtube.com/watch?v=ey3OG-JjCOo&list=PLrmQ9R9YkZmtHdO5rxriLngahJMgCB1mx&index=3)
-- [Key KPIs](key-kpis.md)
 
-- [About the Author](author.md)
+- [11) Key KPIs](key-kpis.md)
+
 - [About the Author](author.md)
